@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+
+    <style>
+      .class-name {
+        margin-top: 30px;
+      }
+      .text-holder {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .text-holder h1 {
+        width: 55%;
+      }
+      .login-holder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .center {
+        padding: 5px 20px 20px 20px;
+        /* height: 370px; */
+        width: 410px;
+        border: 2px solid #272727;
+        margin-top: 75px;
+        border-radius: 10px;
+      }
+      form {
+        display: grid;
+        align-items: center;
+        gap: 5px;
+      }
+      form .input-box {
+        width: 100%;
+        margin-top: 20px;
+        text-align: left;
+      }
+      .input-box label {
+        color: #333;
+        font-family: "Poppins";
+        padding: 3px;
+      }
+      input::placeholder {
+        color: #767676;
+        font-family: "Poppins";
+        font-weight: 400;
+      }
+      form :where(.input-box input) {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 15px;
+        color: #2c2c2c;
+        margin-top: 8px;
+        letter-spacing: 0.2px;
+        font-family: "Poppins";
+        border: 1px solid #cdcdcd;
+        border-radius: 6px;
+        padding: 0 15px;
+        font-weight: 500;
+      }
+      .input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+        border: 2px solid #272727;
+      }
+      .login-btn {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 15.5px;
+        font-weight: 400;
+        margin-top: 10px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #181818;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins";
+        letter-spacing: 0.5px;
+      }
+      .login-btn:hover {
+        transform: scale(0.99);
+      }
+      #error-user {
+        font-size: 13px;
+        margin: 4px;
+        color: red;
+        font-family: "Poppins";
+      }
+      #error-password {
+        font-size: 13px;
+        margin: 4px;
+        color: red;
+        font-family: "Poppins";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+      <div class="text-holder">
+        <h1>Welcome To Teachers Panel Please Login To Continue</h1>
+      </div>
+      <p id="randomquote"></p>
+
+      <div class="login-holder">
+        <div class="center">
+          <form>
+            <div class="input-box">
+              <label>Teacher's Id</label>
+              <input
+                type="text"
+                required
+                placeholder="Enter Id"
+                id="username"
+              />
+              <div id="error-user"></div>
+            </div>
+
+            <div class="input-box">
+              <label>Password</label>
+              <input
+                type="password"
+                required
+                placeholder="Enter Password"
+                id="password"
+              />
+              <div id="error-password"></div>
+            </div>
+
+            <input
+              type="submit"
+              value="Login"
+              class="login-btn"
+              id="Chnagetext"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="btn-back" id="Goback">Back</div>
+    <script>
+      window.onload = function () {
+        var reminderOptions = [
+          "Please keep in mind that access to this page is restricted to teachers only.",
+          "Kindly remember that only teachers are permitted to be on this page.",
+          "It's important to note that this page is exclusive to teachers and should not be accessed by others.",
+          "For security, please bear in mind that only teachers have permission to use this page.",
+          "This page is restricted to teachers only, so please ensure you have the necessary authorization.",
+          "Remember, the content on this page is intended solely for teachers and not for general access.",
+          "Please be aware that only users with teachers privileges are allowed to be on this page.",
+          "For the sake of privacy and security, kindly remember that this page is exclusively for teachers.",
+          "It's crucial to acknowledge that access to this page is limited to teachers and not open to all users.",
+          "This is a reminder that only teachers have the authority to access and use this page.",
+        ];
+
+        var randomIndex = Math.floor(Math.random() * reminderOptions.length);
+        var randomReminder = reminderOptions[randomIndex];
+        var reminderElement = document.getElementById("randomquote");
+        reminderElement.textContent = randomReminder;
+      };
+    </script>
+    <script>
+      var form = document.querySelector("form");
+      var usernameInput = document.getElementById("username");
+      var passwordInput = document.getElementById("password");
+
+      var correctPassword = localStorage.getItem("correctPassword");
+      var correctUsername = localStorage.getItem("correctUsername");
+
+      var button = document.getElementById("Chnagetext");
+
+      document.addEventListener("keydown", function (event) {
+        if (event.shiftKey && event.key === "P") {
+          passwordInput.value = correctPassword;
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.shiftKey && event.key === "U") {
+          usernameInput.value = correctUsername;
+        }
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Check if the username and password are correct
+        var username = usernameInput.value;
+        var password = passwordInput.value;
+
+        if (username === correctUsername && password === correctPassword) {
+          // Login successful
+          usernameInput.style.borderColor = "green";
+          passwordInput.style.borderColor = "green";
+          button.value = "Logged In";
+          window.location.href = "select_teacher.html#+logged+in+user+1+0018";
+        } else if (
+          username !== correctUsername &&
+          password === correctPassword
+        ) {
+          document.getElementById("error-user").textContent =
+            "Incorrect Username";
+          usernameInput.style.borderColor = "red";
+          passwordInput.style.borderColor = "#272727";
+        } else if (
+          username === correctUsername &&
+          password !== correctPassword
+        ) {
+          document.getElementById("error-user").textContent = "";
+          usernameInput.style.borderColor = "#272727";
+          document.getElementById("error-password").textContent =
+            "Incorrect Password";
+          passwordInput.style.borderColor = "red";
+        } else {
+          document.getElementById("error-user").textContent =
+            "Incorrect Username";
+          usernameInput.style.borderColor = "red";
+          document.getElementById("error-password").textContent =
+            "Incorrect Password";
+          passwordInput.style.borderColor = "red";
+        }
+      });
+
+      // Reset the input border colors when the user changes the value
+      usernameInput.addEventListener("input", function () {
+        usernameInput.style.borderColor = "#272727";
+        document.getElementById("error-user").textContent = "";
+      });
+
+      passwordInput.addEventListener("input", function () {
+        passwordInput.style.borderColor = "#272727";
+        document.getElementById("error-password").textContent = "";
+      });
+
+      const submitButton = document.getElementById("Chnagetext");
+
+      addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          submitButton.click();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        // Get the pressed key and whether the Shift key is pressed
+        const key = event.key.toLowerCase();
+        const shiftKey = event.shiftKey;
+
+        // Disable writing 'p' and 'u' when Shift is pressed
+        if ((key === "p" || key === "u") && shiftKey) {
+          event.preventDefault();
+          return false;
+        }
+      });
+    </script>
+    <script src="../script.js"></script>
+    <script src="code.js"></script>
+  </body>
+</html>

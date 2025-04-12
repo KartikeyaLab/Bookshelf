@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-weight: 500;
+        font-family: "Poppins";
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        width: 100%;
+        height: 100vh;
+      }
+      .container {
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.337);
+      }
+      .container header {
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 500;
+        text-align: center;
+      }
+      .container .form {
+        margin-top: 30px;
+      }
+      .form .input-box {
+        width: 100%;
+        margin-top: 20px;
+      }
+      .input-box label {
+        color: #333;
+      }
+      .form :where(.input-box input, .select-box) {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: #767676;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 0 15px;
+        font-weight: 400;
+      }
+      .input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      }
+      .form .column {
+        display: flex;
+        column-gap: 15px;
+      }
+
+      .form .submit-btn {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 30px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #181818;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .form .submit-btn:hover {
+        background: #262626;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form
+        class="form"
+        id="myForm"
+        method="post"
+        action="https://sheetdb.io/api/v1/8q7esz1v7xwfe"
+      >
+        <div class="input-box">
+          <label> Name</label>
+          <input
+            type="text"
+            id="FirstName"
+            name="Name"
+            class="styled-input"
+            readonly
+          />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label> Book </label>
+            <input
+              type="text"
+              id="BookName"
+              name="Book"
+              class="styled-input"
+              readonly
+            />
+          </div>
+          <div class="input-box">
+            <label>Author </label>
+            <input
+              type="text"
+              id="Authorname"
+              name="Author"
+              class="styled-input"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Date</label>
+            <input
+              type="text"
+              readonly
+              name="Date"
+              id="dateInput"
+              title="You can't edit this field"
+            />
+          </div>
+
+          <div class="input-box">
+            <label>Due Date </label>
+            <input
+              type="text"
+              id="DueDate"
+              name="Return"
+              readonly
+              title="You can't edit this field"
+            />
+          </div>
+
+          <div class="input-box">
+            <label>Time</label>
+            <input
+              type="time"
+              readonly
+              name="Time"
+              id="timeInput"
+              title="You can't edit this field"
+            />
+          </div>
+        </div>
+
+        <div class="column">
+          <input
+            type="submit"
+            class="submit-btn"
+            id="Chnagetext"
+            value="Submit"
+          />
+          <div class="submit-btn" id="Editclickchange" onclick="enableInputs()">
+            Edit
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <div class="btn-back" id="Goback">Back</div>
+
+    <script>
+      function enableInputs() {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+          if (
+            inputs[i].id !== "dateInput" &&
+            inputs[i].id !== "timeInput" &&
+            inputs[i].id !== "DueDate"
+          ) {
+            inputs[i].removeAttribute("readonly");
+            inputs[i].setAttribute("required", true);
+          }
+        }
+      }
+
+      const buttonedit = document.getElementById("Editclickchange");
+      buttonedit.addEventListener("click", function () {
+        enableInputs();
+        buttonedit.innerHTML = "Edit Enabled";
+        const elements = document.querySelectorAll(".styled-input");
+
+        elements.forEach((element) => {
+          element.style.border = "1px solid #272727";
+          element.style.color = "#272727";
+        });
+      });
+    </script>
+    <script>
+      var dueDatefuture = localStorage.getItem("DueDate");
+      var currentDateTime = new Date();
+      var currentDate = currentDateTime.toISOString().split("T")[0];
+      var currentTime = currentDateTime.toTimeString().slice(0, 5);
+      var today = new Date();
+
+      var after7Days = new Date();
+      // Assuming you have the 'dueDate' value obtained from localStorage
+
+      var today = new Date();
+      var after7Days = new Date();
+
+      if (dueDatefuture === "1") {
+        after7Days.setDate(today.getDate() + 1);
+      } else if (dueDatefuture === "2") {
+        after7Days.setDate(today.getDate() + 2);
+      } else if (dueDatefuture === "3") {
+        after7Days.setDate(today.getDate() + 3);
+      } else if (dueDatefuture === "4") {
+        after7Days.setDate(today.getDate() + 4);
+      } else if (dueDatefuture === "5") {
+        after7Days.setDate(today.getDate() + 5);
+      } else if (dueDatefuture === "6") {
+        after7Days.setDate(today.getDate() + 6);
+      } else if (dueDatefuture === "7") {
+        after7Days.setDate(today.getDate() + 7);
+      } else if (dueDatefuture === "14") {
+        after7Days.setDate(today.getDate() + 7);
+      } else {
+        // Handle the case when the selected due date is not within the options
+        alert("Solve the error");
+      }
+
+      // Now you can use the 'after7Days' variable which represents the calculated due date
+
+      var options = { year: "numeric", month: "long", day: "numeric" };
+      var currentDate = today.toLocaleDateString(undefined, options);
+      var formattedAfter7Days = after7Days.toLocaleDateString(
+        undefined,
+        options
+      );
+
+      document.getElementById("DueDate").value = formattedAfter7Days;
+      document.getElementById("dateInput").value = currentDate;
+      document.getElementById("timeInput").value = currentTime;
+
+      const teachername = localStorage.getItem("teachername");
+      const BookName_teacher = localStorage.getItem("BookName_teacher");
+      const Authorname_teacher = localStorage.getItem("Authorname_teacher");
+
+      document.getElementById("FirstName").value = teachername;
+      document.getElementById("BookName").value = BookName_teacher;
+      document.getElementById("Authorname").value = Authorname_teacher;
+
+      // Get the form element by its ID
+      const myform = document.getElementById("myForm");
+
+      // Get all the input elements within the form
+      const inputs = myform.getElementsByTagName("input");
+
+      // Iterate over the input elements
+      for (let i = 0; i < inputs.length; i++) {
+        const input = inputs[i];
+
+        // Get the current input value
+        const value = input.value;
+
+        // Split the value into an array of words
+        const words = value.split(" ");
+
+        // Capitalize the first letter of each word
+        const capitalizedWords = words.map((word) => {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        });
+
+        // Join the capitalized words back into a single string
+        const capitalizedValue = capitalizedWords.join(" ");
+
+        // Update the input value with the capitalized version
+        input.value = capitalizedValue;
+      }
+
+      // Simplified form submission with async/await and arrow functions
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          try {
+            const response = await fetch(e.target.action, {
+              method: "POST",
+              body: new FormData(e.target),
+            });
+
+            if (response.ok) {
+              console.log("Form submmited");
+            } else {
+              console.log("Form not submmited");
+            }
+          } catch (error) {
+            console.log("Error occured");
+          }
+        });
+
+      // Get the button element
+      const button = document.getElementById("Chnagetext");
+
+      // Add a click event listener to the button
+      button.addEventListener("click", function () {
+        // Check the current text of the button
+        button.style.display = "none";
+
+        const buttonedit = document.getElementById("Editclickchange");
+        buttonedit.innerHTML = "Submitted";
+
+        document.getElementById("myForm").style.pointerEvents = "none";
+
+        // Redirect after 1 second
+        setTimeout(() => {
+          redirectToIndex();
+        }, 10);
+      });
+
+      function redirectToIndex() {
+        let countdown = 5;
+
+        const countdownInterval = setInterval(() => {
+          countdown--;
+          document.getElementById("Editclickchange").innerHTML =
+            "Redirecting in " + countdown + " seconds...";
+
+          if (countdown === 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "teachers_note.html";
+          }
+        }, 1000);
+      }
+    </script>
+
+    <script>
+      // Load existing data from local storage on page load
+      window.addEventListener("load", function () {
+        var data = JSON.parse(localStorage.getItem("formData_teacher"));
+        if (data) {
+          data.forEach(function (item) {
+            {
+              function addRowToTable(data1, data2, data3, data4, data5, data6) {
+                // Your implementation of adding a row to the table goes here
+                // For example, if you have a table with ID "myTable":
+                const table = document.getElementById("myTable");
+                const newRow = table.insertRow();
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+                const cell5 = newRow.insertCell(4);
+                const cell6 = newRow.insertCell(5);
+                cell1.innerHTML = data1;
+                cell2.innerHTML = data2;
+                cell3.innerHTML = data3;
+                cell4.innerHTML = data4;
+                cell5.innerHTML = data5;
+                cell6.innerHTML = data6;
+              }
+            }
+          });
+        }
+      });
+
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the form from submitting
+
+          // Get form values
+          var FirstName_teacher = document.getElementById("FirstName").value;
+          var BookName_teacher = document.getElementById("BookName").value;
+          var Authorname_teacher = document.getElementById("Authorname").value;
+          var dateInput_teacher = document.getElementById("dateInput").value;
+          var timeInput_teacher = document.getElementById("timeInput").value;
+          var DueDate_teacher = document.getElementById("DueDate").value;
+
+          // Check if any field is empty
+          if (
+            FirstName_teacher === "" ||
+            BookName_teacher === "" ||
+            Authorname_teacher === "" ||
+            dateInput_teacher === "" ||
+            timeInput_teacher === "" ||
+            DueDate_teacher === ""
+          ) {
+            alert("Please fill in all fields..");
+            return;
+          }
+
+          // Save form data to local storage
+          var formData_teacher =
+            JSON.parse(localStorage.getItem("formData_teacher")) || [];
+          formData_teacher.push({
+            FirstName_teacher: FirstName_teacher,
+            BookName_teacher: BookName_teacher,
+            Authorname_teacher: Authorname_teacher,
+            dateInput_teacher: dateInput_teacher,
+            timeInput_teacher: timeInput_teacher,
+            DueDate_teacher: DueDate_teacher,
+
+            // FirstName: "John",
+            // Class: "A",
+            // Section: "1",
+            // BookName: "JavaScript Book",
+            // Authorname: "John Smith",
+            // dateInput: "July 20, 2023",
+            // DueDate: "July 22, 2023",
+            // timeInput: "21:35",
+          });
+          localStorage.setItem(
+            "formData_teacher",
+            JSON.stringify(formData_teacher)
+          );
+        });
+    </script>
+    <script>
+      function getCurrentDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      function resetClicktheCountIfNeeded() {
+        const lastDate_teacher = localStorage.getItem("lastDate_teacher");
+        const currentDate = getCurrentDate();
+
+        if (currentDate !== lastDate_teacher) {
+          localStorage.setItem("clickCount_teacher", 0);
+          localStorage.setItem("lastDate_teacher", currentDate);
+          console.log("New day! Click count reset to 0.");
+        }
+      }
+
+      function collectButtonClick() {
+        resetClicktheCountIfNeeded();
+
+        let clickCount_teacher =
+          localStorage.getItem("clickCount_teacher") || 0;
+        clickCount_teacher = parseInt(clickCount_teacher, 10) + 1;
+
+        localStorage.setItem("clickCount_teacher", clickCount_teacher);
+        console.log(`Number of clicks today: ${clickCount_teacher}`);
+      }
+
+      document
+        .getElementById("Chnagetext")
+        .addEventListener("click", collectButtonClick);
+
+      // Check for a new day every 1 minute (adjust the interval as needed)
+      setInterval(resetClicktheCountIfNeeded, 1000);
+    </script>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

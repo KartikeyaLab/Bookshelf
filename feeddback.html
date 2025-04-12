@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      #message {
+        height: 200px;
+      }
+      textarea {
+        resize: none;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-weight: 500;
+        font-family: "Poppins";
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        width: 100%;
+        height: 100vh;
+      }
+      .container {
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.337);
+      }
+      .container header {
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 500;
+        text-align: center;
+      }
+      .container .form {
+        margin-top: 30px;
+      }
+      .form .input-box {
+        width: 100%;
+        margin-top: 20px;
+      }
+      .input-box label {
+        color: #333;
+      }
+      .form :where(.input-box input, .select-box) {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: #272727;
+        margin-top: 8px;
+        border: 1px solid #9e9e9e;
+        border-radius: 6px;
+        padding: 0 15px;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      .input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      }
+      input::placeholder {
+        font-weight: 400;
+      }
+      #message_box {
+        position: relative;
+        height: 200px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: #272727;
+        margin-top: 8px;
+        border: 1px solid #9e9e9e;
+        border-radius: 6px;
+        padding: 20px 15px;
+        font-weight: 500;
+      }
+      #message_box::placeholder {
+        font-weight: 400;
+      }
+      .form .column {
+        display: flex;
+        column-gap: 15px;
+      }
+
+      .form .submit-btn {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 30px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #181818;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .form .submit-btn:hover {
+        background: #262626;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <header>Feedback Form</header>
+      <form
+        class="form"
+        id="myForm_feedback"
+        method="post"
+        action="https://sheetdb.io/api/v1/nvjj37v8p423m"
+      >
+        <div class="column">
+          <div class="input-box">
+            <label> Name</label>
+            <input
+              type="text"
+              name="Name"
+              required
+              placeholder="Enter Your Name Here.."
+            />
+          </div>
+
+          <div class="input-box">
+            <label>Date</label>
+            <input
+              type="text"
+              readonly
+              name="Date"
+              id="dateInput"
+              title="You can't edit this field"
+            />
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label> Message </label>
+          <textarea
+            required
+            name="Message"
+            id="message_box"
+            placeholder="Enter Your Message Here.."
+          ></textarea>
+        </div>
+
+        <div class="column">
+          <input
+            type="submit"
+            class="submit-btn"
+            id="Chnagetext"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </section>
+
+    <div class="btn-back" id="Goback">Back</div>
+    <script>
+      var form = document.getElementById("myForm_feedback");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(document.getElementById("myForm_feedback")),
+        })
+          .then((response) => response.json())
+          .then((html) => {});
+      });
+      function setCurrentDate() {
+        const inputField = document.getElementById("dateInput");
+        const currentDate = new Date();
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const month = months[currentDate.getMonth()];
+        const day = currentDate.getDate();
+        const year = currentDate.getFullYear();
+
+        // Format the date as "Month Day, Year"
+        const formattedDate = `${month} ${day}, ${year}`;
+
+        // Set the formatted date in the input field
+        inputField.value = formattedDate;
+      }
+
+      // Call the function to set the current date when the page loads
+      setCurrentDate();
+
+      // Get the button element
+      const button = document.getElementById("Chnagetext");
+
+      // Add a click event listener to the button
+      button.addEventListener("click", function () {
+        // Check the current text of the button
+        button.value = "Submitted";
+
+        document.getElementById("myForm_feedback").style.pointerEvents = "none";
+
+        // Redirect after 1 second
+        setTimeout(() => {
+          redirectToIndex();
+        }, 10); // Change the timeout to 1000 milliseconds (1 second)
+      });
+
+      function redirectToIndex() {
+        let countdown = 5;
+
+        const countdownInterval = setInterval(() => {
+          countdown--;
+          document.getElementById("Chnagetext").value =
+            "Redirecting in " + countdown + " seconds...";
+
+          if (countdown === 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "index.html";
+          }
+        }, 1000);
+      }
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

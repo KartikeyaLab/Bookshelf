@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+
+    <style>
+      .input-box {
+        width: 100%;
+        margin-top: 20px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+      }
+      input {
+        width: 500px;
+        padding: 15px 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        outline: none;
+        font-size: 19px;
+        font-family: "Poppins";
+        border: 2px solid #282728;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      input::placeholder {
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 0.4px;
+      }
+      .class-name {
+        margin-top: 100px;
+      }
+      .class-name h1 {
+        width: 60%;
+        margin-bottom: 10px;
+      }
+      .section-text {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+        <div class="section-text">
+            <h1>Please enter the publisher name in the field below</h1>
+          </div>
+         <p>Enter the Author or Publisher name mentioned on the book here to move further!</p>
+
+      <div class="input-box">
+        <input
+          type="text"
+          placeholder="Enter the name here"
+          id="Authorname"
+          required
+        />
+      </div>
+    </div>
+    <div class="btn-back" id="Goback" >Back</div>
+        <a class="btn-next enterbutton" >Next</div>
+
+
+     
+   
+<script>
+  // Get the div element and input element
+  var div = document.querySelector(".btn-next");
+  var input = document.getElementById("Authorname");
+
+  // Function to check if the input is filled
+  function checkInput() {
+    if (input.value === "") {
+      alert("Please Enter The Author Name!");
+    }else {
+        window.location.href = 'due_date_teacher.html';
+      }
+  }
+
+  // Add event listener to the div element
+  div.addEventListener("click", checkInput);
+
+      // Wait for the page to fully load
+      window.addEventListener("load", function () {
+        // Get the input element
+        const inputElement = document.getElementById("Authorname");
+
+        // Set the focus on the input element
+        inputElement.focus();
+      });
+      
+</script>
+
+
+
+<script>
+ document
+      .querySelector(".btn-next")
+      .addEventListener("click", function () {
+        var Authorname_teacher = document.getElementById("Authorname").value;
+        localStorage.setItem("Authorname_teacher", Authorname_teacher);
+    
+      });
+
+      
+  </script>
+  <script src="../script.js"></script>
+  </body>
+</html>

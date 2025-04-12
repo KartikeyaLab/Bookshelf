@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      .header {
+        min-height: 85vh;
+        width: 100%;
+        /* background-image: linear-gradient(to bottom, #0000004a, #000000b9),
+          url(Media/library.jpg); */
+        background-size: cover;
+        position: relative;
+        background-position: bottom;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="wrapper">
+        <div class="logo">
+          <img src="Media/Main_logo.jpg" />
+          <a href="About.html">BookShelf</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="feeddback.html">Feedback</a></li>
+          <li><a href="About.html">About</a></li>
+          <li><a href="libraryinfo.html">Librarian</a></li>
+          <li><a href="adminpanel.html">Admin Panel</a></li>
+          <li><a href="Teachers/Teachers.html">Teachers Panel</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="header" id="top">
+      <div class="text">
+        <div class="content">
+          <div class="h1">DWPS<span> Libary </span></div>
+        </div>
+        <div class="p" id="randomquote"></div>
+
+        <div class="holder-btn">
+          <a href="select.html"> <div class="btn">Get Started</div></a>
+        </div>
+      </div>
+    </section>
+    <div class="title-info">
+      <p id="random-credit"></p>
+    </div>
+    <script>
+      window.onload = function () {
+        var reminderOptions = [
+          "This program is proudly owned by Kartikeya Rankaushal, dedicated to constant improvement.",
+          "Kartikeya Rankaushal owns this program, striving to make it even better with kindness.",
+          "Under Kartikeya Rankaushal's ownership, this program is on a mission to excel with a gentle touch.",
+          "Kindness and dedication drive Kartikeya Rankaushal's ownership of this program, always aiming for improvement.",
+          "With Kartikeya Rankaushal at the helm, this program is owned with care and a commitment to kindness.",
+          "Kartikeya Rankaushal owns this program with a kind heart, working hard to make it the best it can be.",
+          "This program belongs to Kartikeya Rankaushal, a compassionate owner striving for continuous improvement.",
+          "Under Kartikeya Rankaushal's gentle ownership, this program is steadily evolving to be even better.",
+          "Kindness guides Kartikeya Rankaushal's ownership of this program, fueling their dedication to its growth.",
+          "With a kind spirit, Kartikeya Rankaushal owns this program and is devoted to making it exceptional.",
+          "The ownership of this program belongs to Kartikeya Rankaushal. We are working hard to make it even better.",
+        ];
+        var randomIndex = Math.floor(Math.random() * reminderOptions.length);
+        var randomReminder = reminderOptions[randomIndex];
+        var reminderElement = document.getElementById("random-credit");
+        reminderElement.textContent = randomReminder;
+
+        var quoteOptions = [
+          "Books bring our souls to life - Bookshelf",
+          "Unveil a world within the pages - Bookshelf",
+          "Words on paper, a gateway to endless wonders - Bookshelf",
+          "Books: where imagination soars - Bookshelf",
+          "A book holds a treasure trove of wisdom - Bookshelf",
+          "Reading opens doors to knowledge - Bookshelf",
+          "Books inspire and transform - Bookshelf",
+          "Immerse yourself in captivating stories - Bookshelf",
+          "Books connect hearts and minds - Bookshelf",
+          "Ink on paper, a symphony for the mind - Bookshelf",
+          "Let books illuminate your path - Bookshelf",
+          "Each book tells a unique tale - Bookshelf",
+          "Reading broadens horizons and perspectives - Bookshelf",
+          "Words can change the world - Bookshelf",
+          "The magic of books lies in their pages - Bookshelf",
+          "Explore, learn, and grow through books - Bookshelf",
+          "Books reveal different realities - Bookshelf",
+          "Dreams come alive within book pages - Bookshelf",
+          "Books: keys to infinite imagination - Bookshelf",
+          "Embrace words and embark on adventures - Bookshelf",
+          "Books: silent companions in a noisy world - Bookshelf",
+          "Reading is a ticket to boundless knowledge - Bookshelf",
+          "Words create the fabric of our thoughts - Bookshelf",
+          "Open a book, unlock your mind - Bookshelf",
+          "Books feed the soul with stories and ideas - Bookshelf",
+          "Travel through pages to far-off places - Bookshelf",
+          "Books pulse with human creativity - Bookshelf",
+          "Words heal and inspire - Bookshelf",
+          "Books whisper the universe's secrets - Bookshelf",
+          "Discover the magic of books and lose yourself - Bookshelf",
+        ];
+        randomIndex = Math.floor(Math.random() * quoteOptions.length);
+        randomReminder = quoteOptions[randomIndex];
+        var quoteElement = document.getElementById("randomquote");
+        quoteElement.textContent = randomReminder;
+      };
+    </script>
+
+    <script>
+      async function applyRandomBackground() {
+        const backgroundContainer = document.getElementById("top");
+        const imageUrls = [
+          "Image/Image (1).jpg",
+          "Image/Image (2).jpg",
+          "Image/Image (3).jpg",
+          "Image/Image (4).jpg",
+          "Image/Image (5).jpg",
+          "Image/Image (6).jpg",
+          "Image/Image (7).jpg",
+          "Image/Image (8).jpg",
+          "Image/Image (9).jpg",
+          "Image/Image (10).jpg",
+          "Image/Image (11).jpg",
+          "Image/Image (12).jpg",
+          "Image/Image (13).jpg",
+          "Image/Image (14).jpg",
+          "Image/Image (15).jpg",
+          "Image/Image (16).jpg",
+          "Image/Image (17).jpg",
+          "Image/Image (18).jpg",
+          "Image/Image (19).jpg",
+          "Image/Image (20).jpg",
+          "Image/Image (21).jpg",
+          "Image/Image (22).jpg",
+          "Image/Image (23).jpg",
+          "Image/Image (24).jpg",
+          "Image/Image (25).jpg",
+          "Image/Image (26).jpg",
+          "Image/Image (27).jpg",
+          "Image/Image (28).jpg",
+          "Image/Image (29).jpg",
+          "Image/Image (30).jpg",
+          "Image/Image (31).jpg",
+          "Image/Image (32).jpg",
+          "Image/Image (33).jpg",
+          "Image/Image (34).jpg",
+          "Image/Image (35).jpg",
+          "Image/Image (36).jpg",
+          "Image/Image (37).jpg",
+          "Image/Image (38).jpg",
+          "Image/Image (39).jpg",
+          "Image/Image (40).jpg",
+          "Image/Image (41).jpg",
+          "Image/Image (42).jpg",
+          "Image/Image (43).jpg",
+          "Image/Image (44).jpg",
+          "Image/Image (45).jpg",
+          "Image/Image (46).jpg",
+          "Image/Image (47).jpg",
+          "Image/Image (48).jpg",
+          "Image/Image (49).jpg",
+          "Image/Image (50).jpg",
+          "Image/Image (51).jpg",
+          "Image/Image (52).jpg",
+          "Image/Image (53).jpg",
+          "Image/Image (54).jpg",
+          "Image/Image (55).jpg",
+          "Image/Image (56).jpg",
+          "Image/Image (57).jpg",
+          "Image/Image (58).jpg",
+          "Image/Image (59).jpg",
+          "Image/Image (60).jpg",
+          "Image/Image (61).jpg",
+          "Image/Image (62).jpg",
+          "Image/Image (63).jpg",
+          "Image/Image (64).jpg",
+          "Image/Image (65).jpg",
+          "Image/Image (66).jpg",
+          "Image/Image (67).jpg",
+          "Image/Image (68).jpg",
+          "Image/Image (69).jpg",
+          "Image/Image (70).jpg",
+          "Image/Image (71).jpg",
+          "Image/Image (72).jpg",
+          "Image/Image (73).jpg",
+          "Image/Image (74).jpg",
+          "Image/Image (75).jpg",
+          "Image/Image (76).jpg",
+          "Image/Image (77).jpg",
+          "Image/Image (78).jpg",
+          "Image/Image (79).jpg",
+          "Image/Image (80).jpg",
+          "Image/Image (81).jpg",
+          "Image/Image (82).jpg",
+          "Image/Image (83).jpg",
+          "Image/Image (84).jpg",
+          "Image/Image (85).jpg",
+          "Image/Image (86).jpg",
+          "Image/Image (87).jpg",
+          "Image/Image (88).jpg",
+          "Image/Image (89).jpg",
+          "Image/Image (90).jpg",
+          "Image/Image (91).jpg",
+          "Image/Image (92).jpg",
+          "Image/Image (93).jpg",
+          "Image/Image (94).jpg",
+          "Image/Image (95).jpg",
+          "Image/Image (96).jpg",
+          "Image/Image (97).jpg",
+          "Image/Image (98).jpg",
+          "Image/Image (99).jpg",
+          "Image/Image (100).jpg",
+          "Image/Image (101).jpg",
+          "Image/Image (102).jpg",
+          "Image/Image (103).jpg",
+          "Image/Image (104).jpg",
+          "Image/Image (105).jpg",
+          "Image/Image (106).jpg",
+          "Image/Image (107).jpg",
+          "Image/Image (108).jpg",
+          "Image/Image (109).jpg",
+          "Image/Image (110).jpg",
+          "Image/Image (111).jpg",
+          "Image/Image (112).jpg",
+          "Image/Image (113).jpg",
+          "Image/Image (114).jpg",
+          // "Image/Image (115).jpg",
+          "Image/Image (116).jpg",
+          "Image/Image (117).jpg",
+          "Image/Image (118).jpg",
+          "Image/Image (119).jpg",
+          "Image/Image (120).jpg",
+          "Image/Image (121).jpg",
+        ];
+
+        if (imageUrls.length === 0) {
+          console.error("No image URLs specified.");
+          return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+        const randomImage = imageUrls[randomIndex];
+
+        backgroundContainer.style.backgroundImage = `linear-gradient(to bottom, #0000004a, #000000b9) ,url('${randomImage}')`;
+      }
+
+      applyRandomBackground(); // Apply a random background on page load
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

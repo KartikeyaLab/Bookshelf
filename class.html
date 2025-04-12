@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      #StudentName {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+      <h1 id="StudentName"></h1>
+      <p>Choose your class by clicking on the respective option to continue.</p>
+      <div class="class-holder">
+        <label>
+          <input type="radio" name="lower" value="5th" />
+          <div class="class">5th</div>
+        </label>
+        <label>
+          <input type="radio" name="lower" value="6th" />
+          <div class="class">6th</div>
+        </label>
+        <label>
+          <input type="radio" name="lower" value="7th" />
+          <div class="class">7th</div>
+        </label>
+        <label>
+          <input type="radio" name="lower" value="8th" />
+          <div class="class">8th</div>
+        </label>
+      </div>
+      <div class="class-holder">
+        <label>
+          <input type="radio" name="lower" value="9th" />
+          <div class="class">9th</div>
+        </label>
+        <label>
+          <input type="radio" name="lower" value="10th" />
+          <div class="class">10th</div>
+        </label>
+        <label>
+          <input type="radio" name="lower" value="11th" />
+          <div class="class">11th</div>
+        </label>
+        <label>
+          <input type="radio" name="lower" value="12th" />
+          <div class="class">12th</div>
+        </label>
+      </div>
+      <form
+        id="myForm"
+        action="form.html"
+        method="get"
+        onsubmit="return validateForm()"
+      ></form>
+    </div>
+
+    <div class="btn-back" id="Goback">Back</div>
+
+    <div
+      class="btn-next enterbutton"
+      onclick="class5th(); class6th(); class7th(); class8th(); class9th(); class10th(); class11th(); class12th(); validateForm()"
+    >
+      Next
+    </div>
+
+    <script>
+      // Get the name from localStorage and display the greeting
+      var name = localStorage.getItem("name");
+      var firstnameextracted = localStorage.getItem("firstnameextracted");
+      var greetingElement = document.getElementById("StudentName");
+      greetingElement.textContent =
+        "Hey " + firstnameextracted + " Select your class";
+    </script>
+
+    <script>
+      // Get reference to the radio buttons
+      const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+      // Add event listener to each radio button
+      radioButtons.forEach((radioButton) => {
+        radioButton.addEventListener("change", (event) => {
+          // Get the selected value
+          const selectedValueclass = event.target.value;
+
+          // Store the selected value in localStorage
+          localStorage.setItem("selectedValueclass", selectedValueclass);
+        });
+      });
+
+      function class5th() {
+        const selectedClass = document.querySelector(
+          'input[value="5th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-main.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class6th() {
+        const selectedClass = document.querySelector(
+          'input[value="6th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-main.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class7th() {
+        const selectedClass = document.querySelector(
+          'input[value="7th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-main.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class8th() {
+        const selectedClass = document.querySelector(
+          'input[value="8th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-main.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class9th() {
+        const selectedClass = document.querySelector(
+          'input[value="9th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-main.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class10th() {
+        const selectedClass = document.querySelector(
+          'input[value="10th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-main.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class11th() {
+        const selectedClass = document.querySelector(
+          'input[value="11th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-higher.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+      function class12th() {
+        const selectedClass = document.querySelector(
+          'input[value="12th"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "section-higher.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+
+      function validateForm() {
+        var radios = document.getElementsByName("lower");
+        var selected = false;
+
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            selected = true;
+            break;
+          }
+        }
+
+        if (!selected) {
+          alert("Please select your class");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

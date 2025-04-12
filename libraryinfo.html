@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      .header {
+        height: 90vh;
+      }
+      .header .h1 {
+        font-size: 80px;
+        line-height: 90px;
+        margin-bottom: 20px;
+      }
+      .about {
+        padding: 4rem 5%;
+      }
+      h1 {
+        font-family: "Hanken Grotesk";
+        font-size: 45px;
+        text-transform: capitalize;
+        margin-top: 30px;
+      }
+      .about p {
+        font-family: "poppins";
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        margin-top: 10px;
+        line-height: 26px;
+        font-size: 18px;
+        margin-top: 30px;
+      }
+      h4 {
+        font-family: "Hanken Grotesk";
+        font-size: 30px;
+        text-transform: capitalize;
+        margin-top: 30px;
+      }
+
+      /* Footer Starts */
+      footer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url(Media/Background.webp);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      footer .top {
+        width: 100%;
+        border-bottom: 1px solid #ffffff59;
+      }
+      footer .top h1 {
+        font-size: 40px;
+        color: #fff;
+        padding: 2rem 5%;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+      footer .content {
+        padding: 3rem 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+      }
+      footer .content .detail-box {
+        width: 50%;
+        margin-bottom: 55px;
+      }
+
+      footer .content .detail-box h1 {
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: 29px;
+      }
+      footer .content .detail-box p {
+        font-family: "poppins";
+        font-weight: 300;
+        line-height: 30px;
+        color: #ffffff;
+        margin: 15px 0 0 0;
+        letter-spacing: 1px;
+      }
+      footer .content .detail-box p a {
+        letter-spacing: 0.5px;
+        color: #ffffff;
+        font-weight: 400;
+        text-decoration: none;
+      }
+      footer .content .detail-box p a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrapper">
+        <div class="logo">
+          <img src="Media/Main_logo.jpg" />
+          <a href="About.html">BookShelf</a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html" title="Home">Home</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="header" id="top">
+      <div class="text">
+        <div class="h1">Our<span> librarian</span></div>
+        <div class="p" id="randomquote"></div>
+      </div>
+
+      <a href="#bottom" class="down-box">
+        <i class="fa-solid fa-arrow-turn-down"></i
+      ></a>
+    </section>
+
+    <section class="about">
+      <h1>Bookshelf, Thanks to Our School Librarian, Ashish Sir</h1>
+      <p>
+        Our school librarian, Ashish Sir, deserves heartfelt appreciation for
+        his remarkable dedication and commitment to fostering a love for reading
+        and learning among students. Under his guidance, our school library has
+        transformed into a treasure trove of knowledge and a sanctuary for eager
+        minds.
+      </p>
+      <p>
+        We are immensely grateful to Ashish Sir for his unwavering dedication
+        and his role in shaping our intellectual growth. His commitment to
+        providing us with access to a rich literary landscape has opened doors
+        to new worlds and expanded our understanding of diverse cultures, ideas,
+        and perspectives.
+      </p>
+
+      <p>
+        On behalf of all the students, we extend our heartfelt thanks to Ashish
+        Sir for being an extraordinary librarian, mentor, and friend. His
+        passion for books and his commitment to nurturing our thirst for
+        knowledge have left an indelible mark on our lives. The bookshelf in our
+        school library stands as a testament to his invaluable contributions,
+        and we are fortunate to have him guiding us on this literary journey.
+      </p>
+
+      <p>
+        Thank you, Ashish Sir, for being a beacon of inspiration and for
+        enriching our lives through the world of books.
+      </p>
+    </section>
+    <footer id="bottom">
+      <div class="top">
+        <h1>DWPS's Bookshelf</h1>
+      </div>
+      <div class="content">
+        <div class="detail-box">
+          <h1>About Us</h1>
+          <p>
+            Welcome to Bookshelf, a remarkable program developed by Kartikeya
+            Rankaushal, a student currently studying in Class 9th Sapphire.
+          </p>
+        </div>
+
+        <div class="detail-box">
+          <h1>Email Us</h1>
+          <p>
+            You can contact me by my email. My email address is
+            <a href="#">kartikeya362009@gmail.com</a>
+            I value your feedback and suggestions. Thank you for choosing me and
+            my program.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      window.onload = function () {
+        var quoteOptions = [
+          "Books bring our souls to life - Bookshelf",
+          "Unveil a world within the pages - Bookshelf",
+          "Words on paper, a gateway to endless wonders - Bookshelf",
+          "Books: where imagination soars - Bookshelf",
+          "A book holds a treasure trove of wisdom - Bookshelf",
+          "Reading opens doors to knowledge - Bookshelf",
+          "Books inspire and transform - Bookshelf",
+          "Immerse yourself in captivating stories - Bookshelf",
+          "Books connect hearts and minds - Bookshelf",
+          "Ink on paper, a symphony for the mind - Bookshelf",
+          "Let books illuminate your path - Bookshelf",
+          "Each book tells a unique tale - Bookshelf",
+          "Reading broadens horizons and perspectives - Bookshelf",
+          "Words can change the world - Bookshelf",
+          "The magic of books lies in their pages - Bookshelf",
+          "Explore, learn, and grow through books - Bookshelf",
+          "Books reveal different realities - Bookshelf",
+          "Dreams come alive within book pages - Bookshelf",
+          "Books: keys to infinite imagination - Bookshelf",
+          "Embrace words and embark on adventures - Bookshelf",
+          "Books: silent companions in a noisy world - Bookshelf",
+          "Reading is a ticket to boundless knowledge - Bookshelf",
+          "Words create the fabric of our thoughts - Bookshelf",
+          "Open a book, unlock your mind - Bookshelf",
+          "Books feed the soul with stories and ideas - Bookshelf",
+          "Travel through pages to far-off places - Bookshelf",
+          "Books pulse with human creativity - Bookshelf",
+          "Words heal and inspire - Bookshelf",
+          "Books whisper the universe's secrets - Bookshelf",
+          "Discover the magic of books and lose yourself - Bookshelf",
+        ];
+        randomIndex = Math.floor(Math.random() * quoteOptions.length);
+        randomReminder = quoteOptions[randomIndex];
+        var quoteElement = document.getElementById("randomquote");
+        quoteElement.textContent = randomReminder;
+      };
+
+      document.addEventListener("keydown", function (event) {
+        if (event.keyCode === 37 || event.key === "ArrowLeft") {
+          window.history.back();
+        }
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/f36b54ae42.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

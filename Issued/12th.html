@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="body-two">
+      <div class="confirmation-popup">
+        <h1>Do you want to Return your book?</h1>
+        <p>
+          Have you finished reading the book? Please make sure to place the book
+          back on the shelf you borrowed it from for the convenience of other
+          readers.
+        </p>
+
+        <div class="popup-button-holder">
+          <button class="btn-hide">Close</button>
+          <button class="btn-hide" id="Return">Return</button>
+        </div>
+      </div>
+    </div>
+    <div class="class-name">
+      <div class="text-holder">
+        <h1>Who borrowed a book from your class? <br />Let's check!</h1>
+      </div>
+      <p>
+        Interested in finding out the names of the students who have borrowed a
+        book from your class?
+      </p>
+    </div>
+    <div class="table-holder">
+      <div class="table-scroll">
+        <table id="dataTable" class="content-table">
+          <tr class="table-row">
+            <th>Name</th>
+            <th>Class</th>
+            <th>Section</th>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Due Date</th>
+            <th>Time</th>
+            <th>Action</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="class-btn-holder">
+      <div class="btn-next-class" id="Goback">Back</div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var data = JSON.parse(localStorage.getItem("formData"));
+        if (data) {
+          data.forEach(function (item) {
+            if (item.Class === "12th") {
+              addRowToTable(
+                item.FirstName,
+                item.Class,
+                item.Section,
+                item.BookName,
+                item.Authorname,
+                item.dateInput,
+                item.DueDate,
+                item.timeInput
+              );
+            }
+          });
+        }
+      });
+
+      function addRowToTable(
+        FirstName,
+        Class,
+        Section,
+        BookName,
+        Authorname,
+        dateInput,
+        DueDate,
+        timeInput
+      ) {
+        // Create a new row in the table
+        var table = document.getElementById("dataTable");
+        var row = table.insertRow(-1);
+
+        // Insert cells in the row
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
+        var cell9 = row.insertCell(8);
+
+        // Set cell values
+
+        cell1.innerHTML = FirstName;
+        cell2.innerHTML = Class;
+        cell3.innerHTML = Section;
+        cell4.innerHTML = BookName;
+        cell5.innerHTML = Authorname;
+        cell6.innerHTML = dateInput;
+        cell7.innerHTML = DueDate;
+        cell8.innerHTML = timeInput;
+
+        // Add erase option
+        var eraseButton = document.createElement("span");
+        eraseButton.innerHTML = "Return";
+        eraseButton.addEventListener("click", function () {
+          displayConfirmation(row);
+        });
+        cell9.appendChild(eraseButton);
+
+        // Check if the DueDate is today
+        var today = new Date();
+        var dueDate = new Date(DueDate);
+
+        // Clear any previously added classes
+        row.classList.remove("due-today");
+
+        // Check if the dueDate is today or in the past
+        if (dueDate <= today) {
+          // Get the current time as hours and minutes
+          var currentDateTime = new Date();
+          var currentHour = currentDateTime.getHours();
+          var currentMinute = currentDateTime.getMinutes();
+
+          // Parse the timeInput to get hours and minutes
+          var timeParts = timeInput.split(":");
+          var inputHour = parseInt(timeParts[0], 10);
+          var inputMinute = parseInt(timeParts[1], 10);
+
+          // Compare the due time with the current time
+          if (dueDate <= today) {
+            // Set the row color to red to indicate it's due today or in the past
+            row.classList.add("due-today");
+          }
+        }
+      }
+
+      function displayConfirmation(row) {
+        var confirmationPopup = document.querySelector(".confirmation-popup");
+        confirmationPopup.style.display = "block";
+
+        var bodyTwo = document.querySelector(".body-two");
+        bodyTwo.style.display = "block";
+
+        var eraseButton = confirmationPopup.querySelector("button");
+        eraseButton.addEventListener("click", function () {
+          confirmationPopup.style.display = "none";
+          bodyTwo.style.display = "none";
+        });
+
+        var returnButton = document.getElementById("Return");
+        returnButton.addEventListener("click", function () {
+          deleteRowFromTable(row);
+          confirmationPopup.style.display = "none";
+          bodyTwo.style.display = "none";
+
+          window.location.href = "../returnnote.html";
+        });
+      }
+
+      function deleteRowFromTable(row) {
+        // Get the corresponding row index
+        var rowIndex = row.rowIndex;
+
+        // Remove row from the table
+        row.remove();
+
+        // Remove corresponding data from local storage
+        var formData = JSON.parse(localStorage.getItem("formData"));
+        formData.splice(rowIndex - 1, 1);
+        localStorage.setItem("formData", JSON.stringify(formData));
+      }
+
+      function scrollTable(direction) {
+        var tableScroll = document.querySelector(".table-scroll");
+        if (direction === "left") {
+          tableScroll.scrollLeft -= 100;
+        } else if (direction === "right") {
+          tableScroll.scrollLeft += 100;
+        }
+      }
+    </script>
+    <script src="script.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

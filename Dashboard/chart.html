@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      .space {
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="space"></div>
+    <canvas id="analyticsChart" width="500" height="300"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+
+    <script>
+      function getLast7Days() {
+        const dateLabels = [];
+        for (let i = 6; i >= 0; i--) {
+          const date = moment().subtract(i, "days").format("MMM D");
+          dateLabels.push(date);
+        }
+        return dateLabels;
+      }
+
+      let day1Count = parseInt(localStorage.getItem("day1Count"));
+      let day2Count = parseInt(localStorage.getItem("day2Count"));
+      let day3Count = parseInt(localStorage.getItem("day3Count"));
+      let day4Count = parseInt(localStorage.getItem("day4Count"));
+      let day5Count = parseInt(localStorage.getItem("day5Count"));
+      let day6Count = parseInt(localStorage.getItem("day6Count"));
+      let day7Count = parseInt(localStorage.getItem("day7Count"));
+
+      // Update chart data
+      const chartData1 = [
+        day1Count,
+        day2Count,
+        day3Count,
+        day4Count,
+        day5Count,
+        day6Count,
+        day7Count,
+      ];
+
+      // Sample analytics data for the last 7 days
+      const analyticsData = {
+        labels: getLast7Days(),
+        datasets: [
+          {
+            label: "Students",
+            data: chartData1, // Replace with your data for the last 7 days
+            borderColor: "#272727",
+            borderWidth: 2.5,
+            fill: false,
+          },
+        ],
+      };
+
+      // Get the context of the canvas element
+      const ctx = document.getElementById("analyticsChart").getContext("2d");
+
+      // Create the chart
+      const analyticsChart = new Chart(ctx, {
+        type: "line",
+        data: analyticsData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              display: true,
+            },
+            y: {
+              display: true,
+              title: {
+                display: true,
+                text: "Value",
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

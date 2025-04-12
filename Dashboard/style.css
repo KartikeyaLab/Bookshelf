@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+::selection {
+  background-color: transparent;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 10px 14px;
+  border-right: 1px solid #e6e5e5;
+}
+
+nav .logo-name {
+  display: flex;
+  align-items: center;
+}
+nav .logo-image {
+  display: flex;
+  justify-content: center;
+  min-width: 45px;
+}
+nav .logo-image img {
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+nav .logo-name .logo_name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin-left: 14px;
+}
+nav.close .logo_name {
+  opacity: 0;
+  pointer-events: none;
+}
+nav .menu-items {
+  margin-top: 40px;
+  height: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu-items li {
+  list-style: none;
+}
+.menu-items li a {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  text-decoration: none;
+  position: relative;
+  margin-top: 10px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Raleway";
+  transition: all 0.3s;
+}
+
+.menu-items li a i {
+  font-size: 20px;
+  min-width: 45px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaaaaa;
+  margin: 0 5px;
+  transition: all 0.3s;
+}
+
+.nav-links li a:hover i {
+  color: #ffffff;
+}
+.nav-links li a:hover {
+  background-color: #272727;
+  color: #fff;
+}
+
+.anchor {
+  background-color: #272727;
+}
+.link-name-a {
+  color: #ffffff;
+}
+
+.dashboard {
+  position: relative;
+  left: 250px;
+  min-height: 100vh;
+  width: calc(100% - 250px);
+  padding: 10px 14px;
+}
+
+.dashboard .top {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  display: flex;
+  width: calc(100% - 250px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px 14px;
+  z-index: 10;
+}
+
+.dashboard .top .search-box {
+  position: relative;
+  height: 45px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 30px;
+}
+.top .search-box input {
+  position: absolute;
+  border: 2px solid #c0c0c0;
+  padding: 0 25px 0 50px;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  text-transform: capitalize;
+}
+.top .search-box i {
+  position: absolute;
+  left: 15px;
+  font-size: 22px;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #272727;
+}
+
+.dashboard .dash-content {
+  padding-top: 50px;
+}
+.dash-content .title {
+  display: flex;
+  align-items: center;
+  margin-top: 45px;
+  margin-left: 30px;
+}
+.dash-content .title i {
+  position: relative;
+  height: 35px;
+  width: 35px;
+  background-color: #272727;
+  border-radius: 6px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-left: 10px;
+}
+.dash-content .title .text {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+  margin-left: 10px;
+}
+.dash-content .boxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.dash-content .boxes .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  width: calc(100% / 2 - 55px);
+  padding: 15px 20px;
+  border: 2px solid #272727;
+}
+.boxes .box i {
+  font-size: 35px;
+  color: #000;
+  margin: 10px 0 20px 0;
+}
+.boxes .box .text {
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+}
+.boxes .box .number {
+  font-size: 40px;
+  font-weight: 500;
+  color: #000;
+}
+.mes-con {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#message {
+  margin-top: 100px;
+  font-family: "Hanken Grotesk";
+  font-size: 19px;
+}

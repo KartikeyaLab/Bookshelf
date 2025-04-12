@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      .class {
+        width: 250px;
+      }
+      .class-name h1 {
+        width: 50%;
+      }
+      .section-text {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+      <div class="section-text">
+        <h1 id="StudentName"></h1>
+      </div>
+      <p>Click your Stream in order to proceed further.</p>
+      <div class="section-holder">
+        <div class="class-holder">
+          <label>
+            <input type="radio" name="lower" value="PCM" />
+            <div class="class">PCM</div>
+          </label>
+          <label>
+            <input type="radio" name="lower" value="PCB" />
+            <div class="class">PCB</div>
+          </label>
+        </div>
+        <div class="class-holder">
+          <label>
+            <input type="radio" name="lower" value="Humanities" />
+            <div class="class">Humanities</div>
+          </label>
+          <label>
+            <input type="radio" name="lower" value="Commerce" />
+            <div class="class">Commerce</div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="btn-back" id="Goback">Back</div>
+    <div class="btn-next enterbutton" onclick="Stream(); validateForm()">
+      Next
+    </div>
+    <script>
+      // Get the name from localStorage and display the greeting
+      var firstnameextracted = localStorage.getItem("firstnameextracted");
+      var greetingElement = document.getElementById("StudentName");
+      greetingElement.textContent =
+        firstnameextracted + "!" + " Please Select your Stream";
+    </script>
+    <script>
+      function Stream() {
+        const selectedClass = document.querySelector(
+          'input[name="lower"]:checked'
+        );
+        if (selectedClass) {
+          const classvalue = selectedClass.value;
+          window.location.href =
+            "book.html?class=" + encodeURIComponent(classvalue);
+        }
+      }
+
+      // Get reference to the radio buttons
+      const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+      // Add event listener to each radio button
+      radioButtons.forEach((radioButton) => {
+        radioButton.addEventListener("change", (event) => {
+          // Get the selected value
+          const SelectedSection = event.target.value;
+
+          // Store the selected value in localStorage
+          localStorage.setItem("SelectedSection", SelectedSection);
+        });
+      });
+
+      function validateForm() {
+        var radios = document.getElementsByName("lower");
+        var selected = false;
+
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            selected = true;
+            break;
+          }
+        }
+
+        if (!selected) {
+          alert("Please select your Stream");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

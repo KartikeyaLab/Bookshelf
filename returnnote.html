@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+
+    <style>
+      .class-name {
+        margin-top: 100px;
+      }
+      #StudentName {
+        font-size: 55px;
+        width: 80%;
+      }
+      .text-holder {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+      <div class="text-holder">
+        <h1 id="StudentName"></h1>
+      </div>
+      <p id="random-paragraph"></p>
+    </div>
+
+    <script>
+      window.onload = function () {
+        var reminderOptions = [
+          "A book returned is a story completed. Thank you! Meet you soon!",
+          "Your book's homecoming fills our shelves with gratitude. Meet you soon!",
+          "With the book's safe return, our literary universe thrives. Thank you! Meet you soon!",
+          "The book's journey ends, its pages now at rest. Thanks! Meet you soon!",
+          "You've unlocked the magic within, returning the book. Thank you! Meet you soon!",
+          "In returning the book, you've penned a chapter of gratitude. Thank you! Meet you soon!",
+          "Your book's safe return sparks a symphony of appreciation. Meet you soon!",
+          "With the book back in our embrace, gratitude fills the air. Thank you! Meet you soon!",
+          "Like a protagonist's triumphant return, your book's homecoming delights. Meet you soon!",
+          "As the book finds its place, our paths cross again. Thank you! Meet you soon!",
+        ];
+
+        var randomIndex = Math.floor(Math.random() * reminderOptions.length);
+        var randomReminder = reminderOptions[randomIndex];
+        var reminderElement = document.getElementById("random-paragraph");
+        reminderElement.textContent = randomReminder;
+
+        var thanksOptions = [
+          "Thank you for returning the book promptly. We appreciate it!",
+          "We express our gratitude for the safe return of the book. Thank you!",
+          "Your responsible action of returning the book is acknowledged. Thank you!",
+          "We extend our heartfelt thanks for returning the book. Much appreciated!",
+          "Thank you for bringing back the book. Your cooperation is valued!",
+          "We appreciate your prompt return of the book. Thank you!",
+          "Thank you for honoring the commitment and returning the book!",
+          "Your timely return of the book is greatly appreciated. Thank you!",
+          "We are grateful for the safe return of the book. Thank you!",
+          "Thank you for returning the borrowed book. We appreciate it!",
+          "Your book return brings a smile to our faces. Thank you!",
+          "We are thankful for the return of the book. It means a lot!",
+          "Your effort in returning the book is truly appreciated. Thank you!",
+          "With the book back in our collection, our gratitude overflows. Thank you!",
+          "Thank you for ensuring the book found its way back home. Much appreciated!",
+          "Your thoughtfulness in returning the book is recognized and valued. Thank you!",
+          "We extend our sincere thanks for returning the book promptly. You're amazing!",
+          "The library is grateful for your responsible book return. Thank you!",
+          "Thank you for returning the book, contributing to the library's success!",
+          "We appreciate your respect for the book and returning it on time. Thank you!",
+        ];
+
+        var thanksIndex = Math.floor(Math.random() * thanksOptions.length);
+        var randomThanks = thanksOptions[thanksIndex];
+        var thanksElement = document.getElementById("StudentName");
+        thanksElement.textContent = randomThanks;
+      };
+    </script>
+    <script>
+      // Wait for 10 seconds
+      setTimeout(function () {
+        // Redirect to index.html
+        window.location.href = "index.html";
+      }, 6000);
+    </script>
+  </body>
+</html>

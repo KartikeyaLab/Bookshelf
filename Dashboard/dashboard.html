@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      #dataIframe {
+        z-index: 100;
+        padding: 0px !important;
+      }
+      #message {
+        display: block;
+      }
+
+      .due-today {
+        background-color: #ff0000;
+      }
+      .active {
+        background-color: #272727;
+        color: #fff;
+      }
+      #icon1 {
+        display: none;
+      }
+
+      .dash-content-data {
+        display: none;
+      }
+      iframe {
+        z-index: 9;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px;
+        border: none;
+        outline: none;
+      }
+
+      .table-holder {
+        width: 100%;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .content-table {
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .table-scroll {
+        overflow: auto;
+      }
+
+      .table-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      th,
+      td {
+        border: 2px solid #282828;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        text-align: center;
+        font-family: "Poppins";
+        font-weight: 500;
+      }
+
+      .delete-button {
+        cursor: pointer;
+      }
+
+      td {
+        font-weight: 500;
+        font-family: "Poppins";
+        text-transform: capitalize;
+        text-align: center;
+      }
+
+      td::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-name">
+        <div class="logo-image">
+          <img src="images/logo.png" alt="" />
+        </div>
+        <span class="logo_name">Bookshelf</span>
+      </div>
+
+      <div class="menu-items">
+        <ul class="nav-links">
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-house"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-database"></i>
+              <span>Data</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <span>Teachers</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Over Due </span>
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="#">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Analytics </span>
+            </a>
+          </li> -->
+        </ul>
+
+        <ul class="nav-links-a">
+          <li>
+            <a href="../index.html" class="anchor">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span class="link-name-a">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="dashboard">
+      <div class="dash-content iframe-container" id="iframe-container-1">
+        <div class="top" id="search">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              placeholder="Click to Search Here"
+              id="searchInput"
+            />
+          </div>
+        </div>
+
+        <div class="overview">
+          <div class="title"></div>
+          <div class="boxes">
+            <div class="box box1">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span class="text">Book Issued By Students Today </span>
+              <span id="number1" class="number"> </span>
+            </div>
+            <div class="box box2">
+              <i class="fa-solid fa-school"></i>
+              <span class="text">Book Issued By Teachers Today</span>
+              <span id="number2" class="number"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="title">
+            <i class="fa-solid fa-circle-exclamation" id="icon1"></i>
+            <i class="fa-regular fa-circle-check" id="icon2"></i>
+            <span class="text">Overdue Books By Students</span>
+          </div>
+        </div>
+        <div class="table-holder">
+          <div class="table-scroll">
+            <table id="dataTable" class="content-table">
+              <tr class="table-row">
+                <th>Name</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Book</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Due Date</th>
+                <th>Time</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="mes-con">
+          <p id="message">All books returned on time, no overdue. Great job!</p>
+        </div>
+      </div>
+
+      <div class="iframe-container" id="iframe-container-2">
+        <iframe src="data.html"></iframe>
+      </div>
+
+      <div class="iframe-container" id="iframe-container-3">
+        <iframe src="teachers_data.html"></iframe>
+      </div>
+
+      <div class="iframe-container" id="iframe-container-4">
+        <iframe src="over_due.html"></iframe>
+      </div>
+      <!-- 
+      <div class="iframe-container" id="iframe-container-5">
+        <iframe src="chart.html"></iframe>
+      </div> -->
+    </section>
+
+    <script>
+      const navLinks = document.querySelectorAll(".nav-links li a");
+      let activeLink = document.querySelector(".nav-links li a[href='#']"); // Default to the "Dashboard" link
+
+      // Function to find the closest <a> tag and the nested <span> inside it
+      function findLinkAndSpan(element) {
+        const link = element.closest("a");
+        const span = link ? link.querySelector("span") : null;
+        return { link, span };
+      }
+
+      // Function to handle the click event on the nav-links
+      function handleNavClick(event) {
+        if (activeLink !== null) {
+          // Remove 'active' class from the previous active link
+          activeLink.classList.remove("active");
+          const { span } = findLinkAndSpan(activeLink);
+          if (span) {
+            span.style.color = ""; // Reset text color to default
+          }
+        }
+
+        // Add 'active' class to the clicked nav-link
+        const { link, span } = findLinkAndSpan(event.target);
+        if (link) {
+          link.classList.add("active");
+          if (span) {
+            span.style.color = "#fff"; // Change text color
+          }
+          activeLink = link; // Update the activeLink variable
+        }
+      }
+
+      // Function to handle the mouseenter event on the nav-links
+      function handleNavMouseEnter(event) {
+        if (activeLink !== event.target) {
+          const { span } = findLinkAndSpan(event.target);
+          if (span) {
+            span.style.color = "#fff"; // Change text color on hover
+          }
+        }
+      }
+
+      // Function to handle the mouseleave event on the nav-links
+      function handleNavMouseLeave(event) {
+        if (activeLink !== event.target) {
+          const { span } = findLinkAndSpan(event.target);
+          if (span) {
+            span.style.color = ""; // Reset text color on hover out
+          }
+        }
+      }
+
+      // Add event listener to each nav-link for click and hover
+      navLinks.forEach((link) => {
+        link.addEventListener("click", handleNavClick);
+        link.addEventListener("mouseenter", handleNavMouseEnter);
+        link.addEventListener("mouseleave", handleNavMouseLeave);
+      });
+
+      // Trigger the click event on the default active link to apply the initial 'active' state
+      activeLink.click();
+
+      // End
+
+      function getCurrentDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      function resetClickCountIfNeeded() {
+        const lastDate = localStorage.getItem("lastDate");
+        const currentDate = getCurrentDate();
+
+        if (currentDate !== lastDate) {
+          localStorage.setItem(clickCount, 0);
+          localStorage.setItem(clickCount_teacher, 0);
+          localStorage.setItem("lastDate", currentDate);
+          console.log(`New day! Click count for ${clickKey} reset to 0.`);
+        }
+      }
+      resetClickCountIfNeeded();
+
+      var clickCount = localStorage.getItem("clickCount");
+      var clickCount7Days = localStorage.getItem("clickCount7Days");
+      var clickCount_teacher = localStorage.getItem("clickCount_teacher");
+
+      document.getElementById("number1").innerHTML = clickCount;
+      document.getElementById("number2").innerHTML = clickCount_teacher;
+    </script>
+
+    <script>
+      const buttons = document.querySelectorAll(".nav-links li a");
+
+      buttons.forEach((button, index) => {
+        button.addEventListener("click", function () {
+          const iframeContainers =
+            document.querySelectorAll(".iframe-container");
+          iframeContainers.forEach((iframeContainer, i) => {
+            if (i === index) {
+              iframeContainer.style.display = "block";
+            } else {
+              iframeContainer.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Show the first iframe and hide others by default
+      const iframeContainers = document.querySelectorAll(".iframe-container");
+      if (iframeContainers.length > 0) {
+        iframeContainers.forEach((iframeContainer, index) => {
+          if (index === 0) {
+            iframeContainer.style.display = "block";
+          } else {
+            iframeContainer.style.display = "none";
+          }
+        });
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load", function () {
+        var data = JSON.parse(localStorage.getItem("formData"));
+
+        if (data && data.length > 0) {
+          // Sort the data based on the "DueDate" in descending order (newest first)
+          data.sort(function (a, b) {
+            return new Date(b.DueDate) - new Date(a.DueDate);
+          });
+
+          // Show only the 5 newest data rows
+          var numToShow = 5;
+          var count = 0;
+          for (var i = 0; i < data.length && count < numToShow; i++) {
+            var dueDate = new Date(data[i].DueDate);
+            if (dueDate <= new Date()) {
+              addRowToTable(
+                data[i].FirstName,
+                data[i].Class,
+                data[i].Section,
+                data[i].BookName,
+                data[i].Authorname,
+                data[i].dateInput,
+                data[i].DueDate,
+                data[i].timeInput
+              );
+              count++;
+            }
+          }
+        }
+      });
+
+      function addRowToTable(
+        FirstName,
+        Class,
+        Section,
+        BookName,
+        Authorname,
+        dateInput,
+        DueDate,
+        timeInput
+      ) {
+        // Create a new row in the table
+        var table = document.getElementById("dataTable");
+        var row = table.insertRow(-1);
+
+        // Insert cells in the row
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
+
+        // Set cell values
+
+        cell1.innerHTML = FirstName;
+        cell2.innerHTML = Class;
+        cell3.innerHTML = Section;
+        cell4.innerHTML = BookName;
+        cell5.innerHTML = Authorname;
+        cell6.innerHTML = dateInput;
+        cell7.innerHTML = DueDate;
+        cell8.innerHTML = timeInput;
+
+        // Check if the DueDate is today
+        var today = new Date();
+        var dueDate = new Date(DueDate);
+
+        // Clear any previously added classes
+        row.classList.remove("due-today");
+        row.classList.remove("remove-row");
+
+        if (dueDate > today) {
+          row.classList.add("remove-row");
+        }
+
+        // Check if the dueDate is today or in the past
+        if (dueDate <= today) {
+          // Get the current time as hours and minutes
+          var currentDateTime = new Date();
+          var currentHour = currentDateTime.getHours();
+          var currentMinute = currentDateTime.getMinutes();
+
+          // Parse the timeInput to get hours and minutes
+          var timeParts = timeInput.split(":");
+          var inputHour = parseInt(timeParts[0], 10);
+          var inputMinute = parseInt(timeParts[1], 10);
+
+          // Compare the due time with the current time
+          if (dueDate <= today) {
+            // Set the row color to red to indicate it's due today or in the past
+            document.getElementById("icon1").style.display = "flex";
+            document.getElementById("icon2").style.display = "none";
+            row.classList.add("due-today");
+            document.getElementById("message").style.display = "none";
+          }
+        }
+      }
+
+      function scrollTable(direction) {
+        var tableScroll = document.querySelector(".table-scroll");
+        if (direction === "left") {
+          tableScroll.scrollLeft -= 100;
+        } else if (direction === "right") {
+          tableScroll.scrollLeft += 100;
+        }
+      }
+
+      //       function removeAllData() {
+      //   var table = document.getElementById("dataTable");
+
+      //   // Remove all rows from the table
+      //   while (table.rows.length > 1) {
+      //     table.deleteRow(1);
+      //   }
+
+      //   // Clear local storage data
+      //   localStorage.removeItem("formData");
+      // }
+
+      // // Attach the removeAllData function to the remove button
+      // document.getElementById("RemoveData").addEventListener("click", removeAllData);
+
+      // Function to handle the search functionality
+      function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows and hide those that don't match the search input
+        for (i = 1; i < tr.length; i++) {
+          tr[i].style.display = "none"; // Hide all rows by default
+          td = tr[i].getElementsByTagName("td");
+          for (var j = 0; j < td.length; j++) {
+            if (td[j]) {
+              txtValue = td[j].textContent || td[j].innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = ""; // Show the row if it contains the search input
+                break; // Break the inner loop if a match is found
+              }
+            }
+          }
+        }
+      }
+
+      // Add event listener to the search input to trigger the searchTable function
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", searchTable);
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/f36b54ae42.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../Issued/script.js"></script>
+  </body>
+</html>

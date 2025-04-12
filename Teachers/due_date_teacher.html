@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+    <style>
+      .input-box {
+        width: 100%;
+        margin-top: 20px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+      }
+      input {
+        width: 500px;
+        padding: 15px 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        outline: none;
+        font-size: 19px;
+        font-family: "Poppins";
+        border: 2px solid #282728;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      input::placeholder {
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 0.4px;
+      }
+
+      .class-name h1 {
+        margin-top: 30px;
+        width: 60%;
+        margin-bottom: 10px;
+      }
+      .section-text {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #StudentName {
+        width: 70%;
+      }
+      .class {
+        width: 230px;
+        height: 120px;
+        font-size: 23px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+      <div class="section-text">
+        <h1>How many days do you need to return the book?</h1>
+      </div>
+      <p>
+        Please provide the number of days you require to return the borrowed
+        book within 7 days.
+      </p>
+      <div class="class-holder">
+        <label>
+          <input type="radio" name="day" value="1" />
+          <div class="class">1 Day</div>
+        </label>
+        <label>
+          <input type="radio" name="day" value="2" />
+          <div class="class">2 Days</div>
+        </label>
+        <label>
+          <input type="radio" name="day" value="3" />
+          <div class="class">3 Days</div>
+        </label>
+        <label>
+          <input type="radio" name="day" value="4" />
+          <div class="class">4 Days</div>
+        </label>
+      </div>
+      <div class="class-holder">
+        <label>
+          <input type="radio" name="day" value="5" />
+          <div class="class">5 Days</div>
+        </label>
+        <label>
+          <input type="radio" name="day" value="6" />
+          <div class="class">6 Days</div>
+        </label>
+        <label>
+          <input type="radio" name="day" value="7" />
+          <div class="class">7 Days</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="btn-back" id="Goback">Back</div>
+    <a class="btn-next enterbutton">Next</a>
+
+    <script>
+      document
+        .querySelector(".btn-next")
+        .addEventListener("click", function () {
+          var radios = document.getElementsByName("day");
+          var selectedDueDate;
+
+          for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+              selectedDueDate = radios[i].value;
+              break;
+            }
+          }
+
+          if (selectedDueDate) {
+            localStorage.setItem("DueDate", selectedDueDate);
+            window.location.href = "data_teacher.html";
+          } else {
+            alert("Please select a due date to return the book.");
+          }
+        });
+    </script>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

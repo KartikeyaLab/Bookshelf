@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../font.css" />
+    <link rel="shortcut icon" href="../Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+
+    <style>
+      .input-box {
+        width: 100%;
+        margin-top: 20px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+      }
+      input {
+        width: 500px;
+        padding: 15px 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        outline: none;
+        font-size: 19px;
+        font-family: "Poppins";
+        border: 2px solid #282728;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      input::placeholder {
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 0.4px;
+      }
+      .class-name {
+        margin-top: 100px;
+      }
+      .class-name h1 {
+        width: 60%;
+        margin-bottom: 10px;
+      }
+      .section-text {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+        <div class="section-text">
+            <h1>which book do you want?</h1>
+          </div>
+      <p>Enter the title of the book you wish to proceed with!</p>
+
+      <div class="input-box">
+        <input
+          type="text"
+          placeholder="Please Enter the book name"
+          id="Bookname"
+          required
+        />
+      </div>
+    </div>
+    <div class="btn-back" id="Goback">Back</div>
+        <a class="btn-next enterbutton" >Next</div>
+
+
+     
+   
+<script>
+  // Get the div element and input element
+  var div = document.querySelector(".btn-next");
+  var input = document.getElementById("Bookname");
+
+  // Function to check if the input is filled
+  function checkInput() {
+    if (input.value === "") {
+      alert("Please Enter The Book Name!");
+    }else {
+        window.location.href = 'author_teacher.html';
+      }
+  }
+
+  // Add event listener to the div element
+  div.addEventListener("click", checkInput);
+</script>
+
+
+
+<script>
+    document
+      .querySelector(".btn-next")
+      .addEventListener("click", function () {
+        var BookName_teacher = document.getElementById("Bookname").value;
+        localStorage.setItem("BookName_teacher", BookName_teacher);
+    
+      });
+          // Wait for the page to fully load
+          window.addEventListener("load", function () {
+        // Get the input element
+        const inputElement = document.getElementById("Bookname");
+
+        // Set the focus on the input element
+        inputElement.focus();
+      });
+      
+  </script>
+    <script src="../script.js"></script>
+
+  </body>
+</html>

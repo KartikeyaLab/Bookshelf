@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css" />
+    <link rel="shortcut icon" href="Media/Logo.png" type="image/x-icon" />
+    <title>BookShelf - Developed By Kartikeya Rankaushal</title>
+
+    <style>
+      .class-name {
+        margin-top: 100px;
+      }
+      #StudentName {
+        font-size: 60px;
+        width: 60%;
+      }
+      .text-holder {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="class-name">
+      <div class="text-holder">
+        <h1 id="StudentName"></h1>
+      </div>
+      <p id="random-paragraph"></p>
+    </div>
+
+    <script>
+      // Get the name from localStorage and display the greeting
+      var name = localStorage.getItem("name");
+      var greetingElement = document.getElementById("StudentName");
+      greetingElement.textContent =
+        "Hey " + name + " Thanks for issuing a book!";
+
+      window.onload = function () {
+        var reminderOptions = [
+          "Reminder: Please remember to return the book you borrowed, on time. Thank you!",
+          "Don't forget to bring back the book before the due date. It's much appreciated!",
+          "Just a friendly reminder to return the book you borrowed. The library would be grateful!",
+          "Hey there! Don't let the book slip your mind—remember to return it soon!",
+          "A gentle nudge to return the book you borrowed. The library misses it already!",
+          "Friendly reminder: Return the book you borrowed so others can enjoy it too. Thanks!",
+          "Your attention, please! Please don't forget to return the book you borrowed.",
+          "Bookworm alert! Remember to bring back the book before it's overdue. Thanks!",
+          "Don't let the book go astray! Kindly return it to the library as soon as possible.",
+        ];
+        var randomIndex = Math.floor(Math.random() * reminderOptions.length);
+        var randomReminder = reminderOptions[randomIndex];
+        var reminderElement = document.getElementById("random-paragraph");
+        reminderElement.textContent = randomReminder;
+      };
+    </script>
+    <script>
+      // Wait for 10 seconds
+      setTimeout(function () {
+        // Redirect to index.html
+        window.location.href = "index.html";
+      }, 6000);
+    </script>
+  </body>
+</html>
